@@ -1,0 +1,16 @@
+{% if routes is defined %}
+config router static
+{% for item in routes %}
+set device {{item.interface}}
+set dst {{item.destination_subnet}} {{item.destination_mask}}
+{% if 'gateway' in item %}
+set gateway {{item.gateway}}
+{% endif %}
+{% if 'metric' in item %}
+set distance {{item.metric}}
+{% endif %}
+{% if 'alias' in item %}
+set comment {{item.metric}}
+{% endif %}
+{% endfor %}
+{% endif %}

@@ -1,0 +1,23 @@
+{% if objects is defined %}
+config firewall address
+{% for object, value in objects.items() %}
+edit {{ object }}
+{% if value and 'host' in value %}
+set type ipmask
+set subnet {{ value['host'] }} 255.255.255.255
+{% endif %}
+{% if value and 'subnet' in value %}
+set type ipmask
+set subnet {{ value['subnet'] }} {{ value['mask'] }}
+{% endif %}
+{% if value and 'startip' in value %}
+set type iprange
+set start-ip {{ value['startip'] }}
+set end-ip {{ value['endip'] }}
+{% endif %}
+{% if 'alias' in value %}
+set comment {{ value.alias }}
+{% endif %}
+{% endfor %}
+end
+{% endif %}

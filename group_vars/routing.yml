@@ -1,0 +1,9 @@
+---
+
+routes:
+  - interface:
+    destination_subnet:
+	destination_mask:
+	gateway:
+	metric:
+	alias:

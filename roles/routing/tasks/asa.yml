@@ -1,0 +1,9 @@
+---
+
+- name: include object-groups variables
+  include_vars:
+    file: "group_vars/routing.yml"
+
+- name: write routes
+  asa_config:
+    src: "templates/asa_routing.j2"

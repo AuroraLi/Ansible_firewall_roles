@@ -1,0 +1,4 @@
+---
+
+- name: include device specific tasks
+  include_tasks: "{{playbook_dir}}/{{ ansible_network_os }}.yml"
