@@ -1,9 +1,9 @@
 ---
 
 routes:
-  - interface:
-    destination_subnet:
-	destination_mask:
-	gateway:
-	metric:
-	alias:
+  - interface: port1
+    destination_subnet: 192.0.2.0
+    destination_mask: 255.255.255.0
+    metric: 5
+    alias: test
+
