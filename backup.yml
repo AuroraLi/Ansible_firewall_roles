@@ -1,4 +1,4 @@
 ---
-- hosts: asa
+- hosts: all
   roles: 
   - backup

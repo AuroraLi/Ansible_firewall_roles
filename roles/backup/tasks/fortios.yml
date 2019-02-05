@@ -2,11 +2,11 @@
 
 - name: set backup_file fact
   set_fact:
-    backup_file: "{{ backup_path }}/{{ inventory_hostname }}/running-config_{{ansible_data_time.date}}"
+    backup_file: "{{ backup_path }}/{{ inventory_hostname }}/running-config_{{ansible_date_time.date}}"
 
 - name: write backup to file
   fortios_config:
     host: "{{ inventory_hostname }}"
     backup: yes
     backup_path: "{{ backup_path }}/{{ inventory_hostname }}/"
-    backup_filename: "running-config_{{ansible_data_time.date}}.conf"
+    backup_filename: "running-config_{{ansible_date_time.date}}.conf"
