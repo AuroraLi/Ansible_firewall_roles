@@ -1,0 +1,18 @@
+---
+
+- name: include object-groups variables
+  include_vars:
+    file: "group_vars/routing.yml"
+
+- name: create fortios routes in vdom
+  fortios_config:
+    host: "{{inventory_hostname}}"
+    src: "templates/fortios_routing.j2"
+    vdom: "{{vdom}}"
+  when: vdom is defined
+
+- name: create fortios routes in global
+  fortios_config:
+    host: "{{inventory_hostname}}"
+    src: "templates/fortios_routing.j2"
+  when: vdom is not defined

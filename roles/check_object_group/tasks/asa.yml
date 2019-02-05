@@ -1,0 +1,12 @@
+---
+
+- name: check if IP is included
+  asa_command: 
+    commands: "show run | include {{item}}"
+  register: result
+  loop: "{{ip}}"
+
+- name: check if object-group exists
+  asa_command: 
+    commands: "show object-group id {{object_group}}"
+  register: result

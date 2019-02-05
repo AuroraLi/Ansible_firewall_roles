@@ -1,0 +1,18 @@
+---
+
+- name: include object-groups variables
+  include_vars:
+    file: "group_vars/object-groups.yml"
+
+- name: create fortios addrgrp in vdom
+  fortios_config:
+    host: "{{inventory_hostname}}"
+    src: "templates/fortios_object-groups.j2"
+    vdom: "{{vdom}}"
+  when: vdom is defined
+
+- name: create fortios addrgrp in global
+  fortios_config:
+    host: "{{inventory_hostname}}"
+    src: "templates/fortios_object-groups.j2"
+  when: vdom is not defined

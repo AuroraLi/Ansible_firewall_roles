@@ -1,0 +1,12 @@
+{% if object_groups is defined %}
+config firewall addrgrp
+{% for object_group, value in object_groups.items() %}
+edit {{ object_group }}
+{% for item in value.objects %}
+set member {% for item in value.objects %} {{ item }} {% endfor %}
+{% if 'alias' in value %}
+set comment '{{ value.alias }}'
+{% endif %}
+{% endfor %}
+end
+{% endif %}

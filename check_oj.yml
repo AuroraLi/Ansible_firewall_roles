@@ -1,0 +1,8 @@
+---
+- hosts: asa
+  vars:
+    object_group: new_test
+    ip:
+      - 10.10.10.0/24
+  roles: 
+  - check_object_group
